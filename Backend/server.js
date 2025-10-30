@@ -6,10 +6,11 @@ configDotenv()
 
 const port = process.env.PORT || 3000;
 const app = express();
+app.use(express.json())
 connectDB()
 
 app.use('/api/auth', authRoutes);
-app.use(express.json())
+
 
 app.get('/', (req,res) => {
     res.json({message: "This is Expenza api."})
