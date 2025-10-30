@@ -64,6 +64,6 @@ export const loginUser = async(req,res) => {
 
 //get Profile
 export const getProfile = async(req,res) => {
-    const user = await user.findById(req.user.id).select('-password')
+    const user = await User.findById(req.user.id).select('-password')
     res.json(user)
 }
