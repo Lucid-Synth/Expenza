@@ -1,6 +1,7 @@
 import express from 'express'
 import authRoutes from './routes/authRoutes.js';
 import expenseRoutes from './routes/expenseRoutes.js';
+import reportRoutes from './routes/reportRoutes.js'
 import {connectDB} from './config/db.js'
 import { configDotenv } from 'dotenv';
 configDotenv()
@@ -12,6 +13,7 @@ connectDB()
 
 app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/reports', reportRoutes)
 
 
 app.get('/', (req,res) => {
