@@ -20,7 +20,7 @@ export default function RecentExpensesTable() {
 
   const fetchExpenses = async (authToken) => {
     try {
-      const response = await fetch("http://localhost:3000/api/expenses", {
+      const response = await fetch("https://expenza-hwdl.onrender.com/api/expenses", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

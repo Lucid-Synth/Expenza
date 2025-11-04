@@ -26,7 +26,7 @@ export default function Navbar() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/api/export/${type}`, {
+      const response = await fetch(`https://expenza-hwdl.onrender.com/api/export/${type}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ export default function Navbar() {
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
-      setExportOpen(false); // Close dropdown after export
+      setExportOpen(false);
     } catch (err) {
       console.error("Export Error:", err);
       alert("Error exporting file: " + err.message);

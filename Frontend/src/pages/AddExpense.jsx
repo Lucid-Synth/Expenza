@@ -35,7 +35,7 @@ export default function AddExpense() {
     setStatus("loading");
 
     try {
-      const response = await fetch("http://localhost:3000/api/expenses", {
+      const response = await fetch("https://expenza-hwdl.onrender.com/api/expenses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
