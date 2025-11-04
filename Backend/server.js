@@ -13,11 +13,24 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(helmet())
+const allowedOrigins = [
+  "https://expenza-two.vercel.app"
+];
+
 app.use(cors({
-    origin: ["http://localhost:5173", "https://expenza-two.vercel.app/"],
-    methods: ['GET','POST','PUT','DELETE'],
-    credentials: true
-}))
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 
 app.use(express.json())
 
