@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import {User} from '../models/usermodel.js'
 
 const generateToken = (id) => {
-    return jwt.sign({id},process.env.JWT_SECRET,{expiresIn:'5m'})
+    return jwt.sign({id},process.env.JWT_SECRET,{expiresIn:'30d'})
 }
 
 //Register
