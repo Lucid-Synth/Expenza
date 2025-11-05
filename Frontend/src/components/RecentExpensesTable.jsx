@@ -85,7 +85,11 @@ export default function RecentExpensesTable() {
 
             <div className="flex justify-between items-center text-[10px] sm:text-xs text-gray-500">
               <span></span>
-              <span>{expense.date}</span>
+              <span>{new Date(expense.date).toLocaleDateString('en-IN', { 
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              })}</span>
             </div>
           </div>
         ))}
