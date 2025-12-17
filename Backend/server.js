@@ -14,7 +14,8 @@ const app = express();
 
 app.use(helmet())
 const allowedOrigins = [
-  "https://expenza-eight.vercel.app"
+  "https://expenza-eight.vercel.app",
+  "http://localhost:5173"
 ];
 
 app.use(cors({
