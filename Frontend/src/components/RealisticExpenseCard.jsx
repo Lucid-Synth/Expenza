@@ -23,7 +23,35 @@ export default function RealisticExpenseCard() {
     fetchMonthlyData(savedToken);
   }, []);
 
-  // 🔹 Fetch user profile/name
+  // Listen for deleted expense events and adjust totals locally for speed
+  useEffect(() => {
+    const handler = (e) => {
+      const detail = e?.detail || {};
+      const amount = Number(detail.amount || 0);
+      const date = detail.date;
+      if (!amount) return;
+
+      const monthName = date
+        ? new Date(date).toLocaleString("default", { month: "long" })
+        : null;
+
+      setMonthlyData((prev) =>
+        prev.map((item) => {
+          if (monthName && item.month === monthName) {
+            return { ...item, total: Math.max(0, item.total - amount) };
+          }
+          return item;
+        })
+      );
+
+      setTotalExpenses((prev) => Math.max(0, prev - amount));
+    };
+
+    window.addEventListener("expenseDeleted", handler);
+    return () => window.removeEventListener("expenseDeleted", handler);
+  }, []);
+
+  // Fetch user profile/name
   const fetchUserData = async (authToken) => {
     try {
       const response = await fetch("https://expenza-hwdl.onrender.com/api/auth/profile", {
@@ -44,7 +72,7 @@ export default function RealisticExpenseCard() {
     }
   };
 
-  // 🔹 Fetch monthly expense data
+  //  Fetch monthly expense data
   const fetchMonthlyData = async (authToken) => {
     try {
       const response = await fetch("https://expenza-hwdl.onrender.com/api/reports/monthly", {

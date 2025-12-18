@@ -5,7 +5,7 @@ import RecentExpensesTable from "../components/RecentExpensesTable";
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#0e1117] flex flex-col items-center justify-start px-3 sm:px-6">
-      <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 w-full max-w-6xl">
+      <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 w-full max-w-6-xl overflow-x-hidden scroll-smooth">
         <Navbar />
         
         <div className="flex justify-center w-full">
