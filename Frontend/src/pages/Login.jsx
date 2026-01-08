@@ -45,7 +45,7 @@ export default function Login() {
         <h1
           className="
             text-4xl sm:text-5xl font-extrabold italic tracking-wide
-            bg-gradient-to-r from-indigo-400 via-pink-400 to-cyan-400
+            bg-linear-to-r from-indigo-400 via-pink-400 to-cyan-400
             bg-clip-text text-transparent
           "
         >
@@ -103,7 +103,7 @@ export default function Login() {
             className={`w-full py-3 rounded-xl font-semibold text-[#0d111a] transition-all ${
               status === "loading"
                 ? "bg-gray-500 cursor-not-allowed"
-                : "bg-gradient-to-r from-gray-200 via-gray-100 to-gray-50 hover:from-gray-100 hover:to-white shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+                : "bg-linear-to-r from-gray-200 via-gray-100 to-gray-50 hover:from-gray-100 hover:to-white shadow-[0_0_25px_rgba(255,255,255,0.15)]"
             }`}
           >
             {status === "loading" ? "Logging in..." : "Login"}
